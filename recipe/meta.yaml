@@ -9,9 +9,9 @@
     sha256: 670a06c4705606108776b0e0dc71557576a6dab3b71f455a279b13ebc40a2c2d
 
   build:
-    number: 0
+    number: 1
     skip: True  # [win]
-    script: '"${PYTHON}" -m pip install --no-deps .'
+    script: {{ PYTHON }} -m pip install . -vv
     script_env:
       - GCGOPTDIR="${PREFIX}"
 
@@ -22,16 +22,15 @@
     host:
       - scip >=8.0.0
       - gcg >=3.5.0
-      - pyscipopt >=4.0.0
       - python
       - pip
       - cython >=0.29.21
+      - pyscipopt >=4.0.0
     run:
       - python
+      - pyscipopt >=4.0.0
 
   test:
-    requires:
-      - pyscipopt >=4.0.0
     imports:
       - pygcgopt
       - pygcgopt.gcg
