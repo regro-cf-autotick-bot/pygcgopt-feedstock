@@ -24,10 +24,10 @@
       - gcg >=3.5.0
       - python
       - pip
-      - pyscipopt >=4.0.0
       - cython >=0.29.21
     run:
       - python
+      - pyscipopt >=4.0.0
 
   test:
     imports:
