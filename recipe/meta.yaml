@@ -22,16 +22,14 @@
     host:
       - scip >=8.0.0
       - gcg >=3.5.0
-      - pyscipopt >=4.0.0
       - python
       - pip
+      - pyscipopt >=4.0.0
       - cython >=0.29.21
     run:
       - python
 
   test:
-    requires:
-      - pyscipopt >=4.0.0
     imports:
       - pygcgopt
       - pygcgopt.gcg
