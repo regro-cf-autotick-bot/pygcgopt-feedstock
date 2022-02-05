@@ -6,7 +6,7 @@
 
   source:
     url: https://github.com/scipopt/PyGCGOpt/archive/v{{ version }}.tar.gz
-    sha256: 670a06c4705606108776b0e0dc71557576a6dab3b71f455a279b13ebc40a2c2d
+    sha256: 121eaf94c7baf960545271cec4497f79586908451f395d0117c9290aa797acb5
 
   build:
     number: 0
