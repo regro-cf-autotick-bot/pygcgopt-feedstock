@@ -9,7 +9,7 @@
     sha256: 121eaf94c7baf960545271cec4497f79586908451f395d0117c9290aa797acb5
 
   build:
-    number: 2
+    number: 3
     skip: True  # [win]
     script: {{ PYTHON }} -m pip install . -vv
     script_env:
