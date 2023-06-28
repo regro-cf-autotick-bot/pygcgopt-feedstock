@@ -1,53 +1,53 @@
-{% set version = "0.1.4" %}
+{% set version = "0.2.1" %}
 
-  package:
-    name: pygcgopt
-    version: {{ version }}
+package:
+  name: pygcgopt
+  version: {{ version }}
 
-  source:
-    url: https://github.com/scipopt/PyGCGOpt/archive/v{{ version }}.tar.gz
-    sha256: 121eaf94c7baf960545271cec4497f79586908451f395d0117c9290aa797acb5
+source:
+  url: https://github.com/scipopt/PyGCGOpt/archive/v{{ version }}.tar.gz
+  sha256: 8d4b6fa28e04b287adcc54c5c57126f47324c0f298d504b58281a46487a1580f
 
+build:
+  number: 0
+  skip: true  # [win]
+  script: {{ PYTHON }} -m pip install . -vv
+  script_env:
+    - GCGOPTDIR="${PREFIX}"
+
+requirements:
   build:
-    number: 3
-    skip: True  # [win]
-    script: {{ PYTHON }} -m pip install . -vv
-    script_env:
-      - GCGOPTDIR="${PREFIX}"
+    - python                                   # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}       # [build_platform != target_platform]
+    - cython                                   # [build_platform != target_platform]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - scip >=8.0.0
+    - gcg >=3.5.0
+    - python
+    - pip
+    - cython >=0.29.21
+    - pyscipopt >=4.0.0
+  run:
+    - python
+    - pyscipopt >=4.0.0
 
-  requirements:
-    build:
-      - python                                 # [build_platform != target_platform]
-      - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-      - cython                                 # [build_platform != target_platform]
-      - {{ compiler('c') }}
-      - {{ compiler('cxx') }}
-    host:
-      - scip >=8.0.0
-      - gcg >=3.5.0
-      - python
-      - pip
-      - cython >=0.29.21
-      - pyscipopt >=4.0.0
-    run:
-      - python
-      - pyscipopt >=4.0.0
+test:
+  imports:
+    - pygcgopt
+    - pygcgopt.gcg
+  commands:
+    - python -c 'import pygcgopt.gcg; pygcgopt.gcg.Model()'
 
-  test:
-    imports:
-      - pygcgopt
-      - pygcgopt.gcg
-    commands:
-      - python -c 'import pygcgopt.gcg; pygcgopt.gcg.Model()'
+about:
+  home: https://github.com/scipopt/PyGCGOpt
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: Python interface and modeling environment for GCG
+  doc_url: https://scipopt.github.io/PyGCGOpt/
 
-  about:
-    home: https://github.com/scipopt/PyGCGOpt
-    license: MIT
-    license_family: MIT
-    license_file: LICENSE
-    summary: Python interface and modeling environment for GCG
-    doc_url: https://scipopt.github.io/PyGCGOpt/
-
-  extra:
-    recipe-maintainers:
-      - jurgen-lentz
+extra:
+  recipe-maintainers:
+    - jurgen-lentz
