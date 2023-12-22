@@ -1,4 +1,4 @@
-{% set version = "0.2.1" %}
+{% set version = "0.3.1" %}
 
 package:
   name: pygcgopt
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/scipopt/PyGCGOpt/archive/v{{ version }}.tar.gz
-  sha256: 8d4b6fa28e04b287adcc54c5c57126f47324c0f298d504b58281a46487a1580f
+  sha256: e5e1e0c5b8813a8149874ec73667c36c831b64ecfbef1a2e9d9b2e4103a1ed13
 
 build:
   number: 0
