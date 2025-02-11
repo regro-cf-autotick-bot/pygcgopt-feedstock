@@ -1,4 +1,4 @@
-{% set version = "0.3.1" %}
+{% set version = "0.4.1" %}
 
 package:
   name: pygcgopt
@@ -6,10 +6,10 @@ package:
 
 source:
   url: https://github.com/scipopt/PyGCGOpt/archive/v{{ version }}.tar.gz
-  sha256: e5e1e0c5b8813a8149874ec73667c36c831b64ecfbef1a2e9d9b2e4103a1ed13
+  sha256: bb2fe40e98b2e27dcaf1ee6af7d683d050181d6a2e237f3c40c06b097dd2533b
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   script: {{ PYTHON }} -m pip install . -vv
   script_env:
@@ -21,6 +21,7 @@ requirements:
     - cross-python_{{ target_platform }}       # [build_platform != target_platform]
     - cython                                   # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
   host:
     - scip >=8.0.0
